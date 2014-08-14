@@ -1,0 +1,296 @@
+1 Formatted Division
+
+  #include <iostream>
+  #include <sstream>
+  using namespace std;
+
+string FormattedDivision(int num1, int num2) { 
+
+  int count=0,rem=0,i,ins_pos=0,k=1,len;
+  double num=0;
+  string str,str1;
+  ostringstream convert;
+  num = (double)num1/num2;     
+  cout<<num<<" num ";
+  convert << num;  
+  str = convert.str();
+  cout<<str.length()<<" len "<<str<<" str ";
+  for(i=(str.length()-1);str[i]!='.';i--);
+  cout<<i<<" here ";
+  len = i-1;
+  for(;i>=0;i--)
+  {
+    ins_pos = (len-(count+k));
+    if(count>0 && count%2==0 && ins_pos>0)
+    {
+      str.insert(ins_pos,",");
+      k++;
+    }
+    count++; 
+  }  
+  return str;
+} 
+
+exact division point is not coming...
+try to round off to 3 positions. so that 0.666666 means 0.6667
+***************************************************************************************************
+
+2 Counting Minutes
+
+#include <iostream>
+using namespace std;
+
+int CountingMinutesI(string str) { 
+
+  // code goes here   
+  struct
+  {
+    int hr,min;
+	char ch;
+  }time1,time2;
+  int i,hr_cnt=0,min_cnt=0,sec_cnt=0;
+  time1.hr = 0;
+  time1.min = 0;
+  time2.hr = 0;
+  time2.min = 0;
+  
+  //Assigning the values from string to struct.
+  //time1
+  for(i=0;str[i]!='-';i++)
+  {    
+    while(isdigit(str[i]))	
+	  time1.hr = (time1.hr*10)+(str[i]-48);
+	i++;
+	while(isdigit(str[i]))
+	  time1.min = (time1.min*10)+(str[i]-48);
+    if(isalpha(str[i]))
+	{
+      time1.ch = str[i];
+	  break;
+	}
+  }
+  //time2
+  for(i=i+1;i<str.length();i++)
+  {    
+    while(isdigit(str[i]))	
+	  time2.hr = (time2.hr*10)+(str[i]-48);
+	i++;
+	while(isdigit(str[i]))
+	  time2.min = (time2.min*10)+(str[i]-48);
+    if(isalpha(str[i]))
+	{
+      time2.ch = str[i];
+	  break;
+	}
+  }
+  
+  //Calculate Minutes
+  if(time1.min>0)
+  {
+    min_count+= (60-time1.min);
+    min_cnt+= time2.min;
+    time1.min = 0;
+    time2.min = 0;
+    if(min_cnt >=60)
+    {
+	  time1.hr++;
+	  if(time1.hr>12)
+	  {
+	    time1.hr = 1;
+		if(time1.ch == 'p')
+		  time1.ch = 'a';
+		else
+		  time1.ch = 'p';
+	  }
+    }	
+  }
+  else
+  {
+    min_cnt+= time2.min;  
+	time2.min = 0;
+  }
+  
+  //Calculate Hour
+  while(time1.hr!=time2.hr || time1.ch!=time2.ch)
+  {
+    if(time1.hr!=time2.hr)
+	  hr_cnt++;
+	if(time1.hr == 12)
+	{
+	  time1.hr = 1;
+	  if(time1.ch == 'p')
+		  time1.ch = 'a';
+		else
+		  time1.ch = 'p';
+	}
+  }
+  return ((hr_cnt*60)+min_cnt);             
+  //return str;
+}
+
+int main() { 
+  
+  // keep this function call here
+  cout << CountingMinutesI(gets(stdin));
+  return 0;
+    
+} 
+***************************************************************************************************
+
+3 Counting Minutes
+
+
+***************************************************************************************************
+4 Calculator
+
+calc(str,i is o in main)
+{
+for(;i<str.length();i++)
+{
+str.find(/);
+sum=num1/num2;
+str.replace(num1/num2);
+}
+if(str[i] == '(')
+sum=calc(str,i+1)
+else if(str[i]==')' && str[i+1]=='(')
+return (sum*calci(str,i+2)
+replace the result;
+else if(str[i]==')')
+return sum;
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+string Calculator(string str) { 
+
+  // code goes here   
+  return str; 
+            
+}
+
+int main() { 
+  
+  // keep this function call here
+  cout << Calculator(gets(stdin));
+  return 0;
+    
+} 
+***************************************************************************************************
+
+5 Polynomial
+
+#include <iostream>
+using namespace std;
+
+string PolynomialExpansion(string str) { 
+
+  // code goes here   
+  return str; 
+            
+}
+
+int main() { 
+  
+  // keep this function call here
+  cout << PolynomialExpansion(gets(stdin));
+  return 0;
+    
+} 
+
+***************************************************************************************************
+6 Matrix
+
+#include <iostream>
+using namespace std;
+
+string MatrixDeterminant(string strArr[]) { 
+
+  // code goes here   
+  return strArr[0]; 
+            
+}
+
+int main() { 
+   
+  // keep this function call here
+  /* Note: In C++ you first have to initialize an array and set 
+     it equal to the stdin to test your code with arrays. 
+     To see how to enter arrays as arguments in C++ scroll down */
+     
+  string A[] = gets(stdin);
+  cout << MatrixDeterminant(A);
+  return 0;
+    
+} 
+
+
+***************************************************************************************************
+7 Transitive
+
+#include <iostream>
+using namespace std;
+
+string TransitivityRelations(string strArr[]) { 
+
+  // code goes here   
+  return strArr[0]; 
+            
+}
+
+int main() { 
+   
+  // keep this function call here
+  /* Note: In C++ you first have to initialize an array and set 
+     it equal to the stdin to test your code with arrays. 
+     To see how to enter arrays as arguments in C++ scroll down */
+     
+  string A[] = gets(stdin);
+  cout << TransitivityRelations(A);
+  return 0;
+    
+} 
+
+***************************************************************************************************
+8 Alpahabet Run Enryption
+
+#include <iostream>
+using namespace std;
+
+string AlphabetRunEncryption(string str) { 
+
+  // code goes here   
+  string result = str;
+  for(i=0;i<str.length();i++)
+  {
+    switch(str[i])
+	{
+	case 'N':
+	case 'S':
+	case 'L':
+	case 'R':
+	}
+  }
+  return str; 
+            
+}
+
+int main() { 
+  
+  // keep this function call here
+  cout << AlphabetRunEncryption(gets(stdin));
+  return 0;
+    
+} 
+
+***************************************************************************************************
+
+Curent:  445
+Target:  550
+Diff:    105(10)
+Possible: 8
+NPOS:    25(2 Pgms)
