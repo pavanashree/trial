@@ -1,3 +1,13 @@
+https://github.com/pavanashree
+https://www.linkedin.com/in/pavanashreek
+http://pavanashree.wordpress.com/
+https://twitter.com/pavanashreek02
+http://stackoverflow.com/users/3936041/pavanashree-k
+Facebook
+
+
+
+
 1 Formatted Division
 
   #include <iostream>
@@ -33,115 +43,9 @@ string FormattedDivision(int num1, int num2) {
 
 exact division point is not coming...
 try to round off to 3 positions. so that 0.666666 means 0.6667
-***************************************************************************************************
-
-2 Counting Minutes
-
-#include <iostream>
-using namespace std;
-
-int CountingMinutesI(string str) { 
-
-  // code goes here   
-  struct
-  {
-    int hr,min;
-	char ch;
-  }time1,time2;
-  int i,hr_cnt=0,min_cnt=0,sec_cnt=0;
-  time1.hr = 0;
-  time1.min = 0;
-  time2.hr = 0;
-  time2.min = 0;
-  
-  //Assigning the values from string to struct.
-  //time1
-  for(i=0;str[i]!='-';i++)
-  {    
-    while(isdigit(str[i]))	
-	  time1.hr = (time1.hr*10)+(str[i]-48);
-	i++;
-	while(isdigit(str[i]))
-	  time1.min = (time1.min*10)+(str[i]-48);
-    if(isalpha(str[i]))
-	{
-      time1.ch = str[i];
-	  break;
-	}
-  }
-  //time2
-  for(i=i+1;i<str.length();i++)
-  {    
-    while(isdigit(str[i]))	
-	  time2.hr = (time2.hr*10)+(str[i]-48);
-	i++;
-	while(isdigit(str[i]))
-	  time2.min = (time2.min*10)+(str[i]-48);
-    if(isalpha(str[i]))
-	{
-      time2.ch = str[i];
-	  break;
-	}
-  }
-  
-  //Calculate Minutes
-  if(time1.min>0)
-  {
-    min_count+= (60-time1.min);
-    min_cnt+= time2.min;
-    time1.min = 0;
-    time2.min = 0;
-    if(min_cnt >=60)
-    {
-	  time1.hr++;
-	  if(time1.hr>12)
-	  {
-	    time1.hr = 1;
-		if(time1.ch == 'p')
-		  time1.ch = 'a';
-		else
-		  time1.ch = 'p';
-	  }
-    }	
-  }
-  else
-  {
-    min_cnt+= time2.min;  
-	time2.min = 0;
-  }
-  
-  //Calculate Hour
-  while(time1.hr!=time2.hr || time1.ch!=time2.ch)
-  {
-    if(time1.hr!=time2.hr)
-	  hr_cnt++;
-	if(time1.hr == 12)
-	{
-	  time1.hr = 1;
-	  if(time1.ch == 'p')
-		  time1.ch = 'a';
-		else
-		  time1.ch = 'p';
-	}
-  }
-  return ((hr_cnt*60)+min_cnt);             
-  //return str;
-}
-
-int main() { 
-  
-  // keep this function call here
-  cout << CountingMinutesI(gets(stdin));
-  return 0;
-    
-} 
-***************************************************************************************************
-
-3 Counting Minutes
-
 
 ***************************************************************************************************
-4 Calculator
+2 Calculator
 
 calc(str,i is o in main)
 {
@@ -168,7 +72,8 @@ using namespace std;
 
 string Calculator(string str) { 
 
-  // code goes here   
+  // code goes here  
+    
   return str; 
             
 }
@@ -182,7 +87,7 @@ int main() {
 } 
 ***************************************************************************************************
 
-5 Polynomial
+3 Polynomial
 
 #include <iostream>
 using namespace std;
@@ -203,7 +108,7 @@ int main() {
 } 
 
 ***************************************************************************************************
-6 Matrix
+4 Matrix
 
 #include <iostream>
 using namespace std;
@@ -230,7 +135,7 @@ int main() {
 
 
 ***************************************************************************************************
-7 Transitive
+5 Transitive
 
 #include <iostream>
 using namespace std;
@@ -256,7 +161,7 @@ int main() {
 } 
 
 ***************************************************************************************************
-8 Alpahabet Run Enryption
+6 Alpahabet Run Enryption
 
 #include <iostream>
 using namespace std;
@@ -289,8 +194,8 @@ int main() {
 
 ***************************************************************************************************
 
-Curent:  445
+Curent:  465 (Rank 235)
 Target:  550
-Diff:    105(10)
-Possible: 8
+Diff:    85(8)
+Possible: 6
 NPOS:    25(2 Pgms)
