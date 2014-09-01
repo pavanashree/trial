@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1> Hi This is trial HTML </h1>
+<p> I Heartily Welcome you to my website </p>
+
+<!-- This is date script -->
+<script>
+function date_fun()
+{
+document.getElementById("date").innerHTML = Date();
+alert("This is called inside function");
+}
+</script>
+<p> Click on Date button to get current date and time. </p>
+<p id="date"> <button onclick="date_fun()"> Date </button> </p>
+
+<!-- This is Dialog box script -->
+<script>
+function fun1()
+{
+alert("This is called inside function");
+}
+alert("This is called from script");
+</script>
+<p><button onclick="fun1()">Click on this Dialog Box!</button></p>
+
+</body>
+</html>
