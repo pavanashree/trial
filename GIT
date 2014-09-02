@@ -1,0 +1,50 @@
+ GIT - PRIVATE.... GITHUB -- PUBLIC
+ man git
+ https://github.com/
+ http://gitref.org/ 
+ 
+1) git init: 
+Initialized empty Git repository in current directory.
+
+2) git clone git://github.com/schacon/simplegit.git:
+This will copy the entire history of that project so you have it locally and, it will give you a working directory of the main branch of that project so you can look at the code 
+or start editing it. 
+If you change into the new directory, you can see the .git subdirectory - that is where all the project data is.
+
+3) git add:
+To initially add the file/directory to your staging area, but even if the file is already "tracked" - ie, it was in your last commit - you still need to call git add to add new 
+modifications to your staging area.
+Can recursively add all files in a new project by specifying the current working directory like this: git add .
+
+4) git status -s:
+To see what the state of our project is. 
+If you add any file and do nothing... just edit the file, and check status... It will show differently, "AM".
+The 'AM' status means that the file has been modified on disk since we last added it
+If you modify file again without running git add a second time, you'll see 'MM'.
+
+5) git diff: 
+will display in unified diff format (a patch) what code or content you've changed in your project since the last commit that are not yet staged for the next commit snapshot.
+
+6) git diff --cached:
+Will show you what contents have been staged. It will only show you what is not yet staged. 
+
+7) git diff HEAD:
+show diff of all staged or unstaged changes
+
+8) git diff --stat: 
+show summary of changes instead of a full diff. Can use as "git diff --cached --stat", "git diff HEAD --stat".
+
+9) git commit -m "Comments for addition"
+This is used for comiting/saving the files. 
+
+git commit -a:
+Automatically stage all tracked, modified files before the commit
+
+10) git ls-files --stage
+It lists all the file and the directory present in the repository.
+
+11) git config --global user.name "PavanaShree"
+git config --global user.email pavanashree02@gmail.com
+These 2 commands specify, in which acount we have to do. Or else, it will take its own account name.
+
+12) 
