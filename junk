@@ -1,12 +1,3 @@
-https://github.com/pavanashree
-https://www.linkedin.com/in/pavanashreek
-http://pavanashree.wordpress.com/
-https://twitter.com/pavanashreek02
-http://stackoverflow.com/users/3936041/pavanashree-k
-https://www.facebook.com/pavana.shree.7
-
-
-
 1 Formatted Division
 
   #include <iostream>
@@ -168,19 +159,64 @@ using namespace std;
 string AlphabetRunEncryption(string str) { 
 
   // code goes here   
-  string result = str;
+  string dummy = str;
+  int start=0,end=0,count=0;
+  cout<<"Original string "<<str;
+  //Eliminate all special symbols.
+  for(i=0;i<(str.length()-1);i++)
+  { 
+    start = i;	
+    while((str[i]==(str[i+1]+1)) && ((i+2)<str.length() && str[i+2]!='N'))
+	{
+	  if(i==(str.length()-1))
+	    break;
+	  count++;
+	  i++;	  
+	}
+	end=i;
+	if(count>0)
+	{
+	  str.replace(start,count+1,(str[start]-1));
+	  str.insert(start+1,1,(str[end]+1));
+	}
+    // if(str[i]=='N' || str[i]=='S' || str[i]=='L' || str[i]=='R')
+  }
+  for(i=0;i<(str.length()-1);i++)
+    if(str[i]==str[i+1])
+	  str.erase(i,1);
   for(i=0;i<str.length();i++)
   {
     switch(str[i])
 	{
-	case 'N':
-	case 'S':
-	case 'L':
-	case 'R':
+	case 'N': str.replace(i,1,str[i-1]);
+			  break;
+	case 'S': if(str[i+3] == 'S')
+			  {	
+			    str.erase(i-1,2);
+				i++;
+			  }
+			  else
+			    str.erase(i,1);		      
+			  break;
+	case 'L': str.replace(i,1,str[i-1]-1);
+			  str.replace(i-1,1,str[i-1]+1);
+			  break;
+	case 'R': str.replace(i,1,str[i-1]+1);
+			  str.replace(i-1,1,str[i-1]-1);	          
+			  break;
+	}
+  }  
+  cout<<"After one for loop "<<str;
+  for(i=0;i<str.length();i++)
+  {
+    if(str[i]!=(str[i]+1))	
+	{
+	
 	}
   }
+  
+  cout<<"Second for loop "<<str;
   return str; 
-            
 }
 
 int main() { 
@@ -192,9 +228,13 @@ int main() {
 } 
 
 ***************************************************************************************************
+7 Shortest Path
+
+
+***************************************************************************************************
 
 Curent:  465 (Rank 235)
 Target:  550
 Diff:    85(8)
-Possible: 6
-NPOS:    25(2 Pgms)
+Possible: 7
+NPOS:    15(1 Pgms)
