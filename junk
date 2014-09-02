@@ -158,39 +158,55 @@ using namespace std;
 
 string AlphabetRunEncryption(string str) { 
 
-  // code goes here   
-  string dummy = str;
-  int start=0,end=0,count=0;
-  cout<<"Original string "<<str;
-  //Eliminate all special symbols.
+  // code goes here 
+  int i=0,start=0,count=0,end=0;
+  string start_ch,end_ch;
+  //cout<<"Original string "<<str;  
+  //Normal erase
   for(i=0;i<(str.length()-1);i++)
-  { 
-    start = i;	
-    while((str[i]==(str[i+1]+1)) && ((i+2)<str.length() && str[i+2]!='N'))
-	{
-	  if(i==(str.length()-1))
-	    break;
-	  count++;
-	  i++;	  
+  {     
+    start=i;
+    start_ch = str[i]-1;	    
+    while(str[i]+1 == str[i+1])
+	{    
+      //cout<<"enter";
+      if((i+2)<str.length() && str[i+2]=='N')
+        break;
+	  count++;      
+	  i++;            
 	}
-	end=i;
-	if(count>0)
-	{
-	  str.replace(start,count+1,(str[start]-1));
-	  str.insert(start+1,1,(str[end]+1));
+    end=i;
+	end_ch=str[i]+1;
+    //cout<<start<<".."<<count<<".."<<end<<".";
+	if(count>1)
+	{     
+	  str.replace(start,count,start_ch);
+      //cout<<" here "<<str;      
+	  str.replace(end-count+1,1,end_ch);
+      i=(end-count+1);
+      count=0;
+      //cout<<i<<".";
+      //cout<<" here "<<str;
 	}
     // if(str[i]=='N' || str[i]=='S' || str[i]=='L' || str[i]=='R')
   }
   for(i=0;i<(str.length()-1);i++)
     if(str[i]==str[i+1])
 	  str.erase(i,1);
+  //cout<<"after one loop "<<str;
+  
+  
+  
+  //Eliminate all special symbols.
   for(i=0;i<str.length();i++)
   {
+    string ch;
     switch(str[i])
-	{
-	case 'N': str.replace(i,1,str[i-1]);
-			  break;
-	case 'S': if(str[i+3] == 'S')
+	{      
+      case 'N': ch = str[i-1];
+                str.replace(i,1,ch);                
+              break;
+	  case 'S': if(str[i+3] == 'S')
 			  {	
 			    str.erase(i-1,2);
 				i++;
@@ -198,25 +214,21 @@ string AlphabetRunEncryption(string str) {
 			  else
 			    str.erase(i,1);		      
 			  break;
-	case 'L': str.replace(i,1,str[i-1]-1);
-			  str.replace(i-1,1,str[i-1]+1);
+	case 'L': ch = str[i-1]-1;
+              str.replace(i,1,ch);
+              ch = str[i-1]+1;
+			  str.replace(i-1,1,ch);
 			  break;
-	case 'R': str.replace(i,1,str[i-1]+1);
-			  str.replace(i-1,1,str[i-1]-1);	          
+	case 'R': ch = str[i-1]+1;
+              str.replace(i,1,ch);
+              ch = str[i-1]-1;
+			  str.replace(i-1,1,ch);	          
 			  break;
-	}
-  }  
-  cout<<"After one for loop "<<str;
-  for(i=0;i<str.length();i++)
-  {
-    if(str[i]!=(str[i]+1))	
-	{
-	
 	}
   }
   
-  cout<<"Second for loop "<<str;
-  return str; 
+  
+  return str;            
 }
 
 int main() { 
@@ -224,9 +236,7 @@ int main() {
   // keep this function call here
   cout << AlphabetRunEncryption(gets(stdin));
   return 0;
-    
 } 
-
 ***************************************************************************************************
 7 Shortest Path
 
