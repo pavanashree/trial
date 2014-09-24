@@ -1,0 +1,108 @@
+/* WAP to do a simple prompt */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+main()
+{
+  char cmd[10];
+  while(1)
+  {
+    printf("Welcome >>");
+    scanf("%s",&cmd);
+    if((strcmp(cmd,"q"))==0)
+      exit(0);
+    switch(fork())
+    {
+      case -1: printf("process didn't created \n");
+   	 	break;
+      case 0: execlp(cmd,cmd,(char*)0);
+		break;
+      default: printf("in parent \n");
+		wait(0);
+		break;
+    }
+  }
+}
+
+---------------------------------------------------------------------------------------------
+
+/* WAP for ORPHAN */
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+main()
+{
+  pid_t pid;
+  printf("process id %d, parent id %d \n",getpid(),getppid());
+  pid = fork();
+  if(pid == 0)
+    printf("CHILD:: process id %d, parent id %d \n",getpid(),getppid());
+  else
+    printf("PARENT:: process id %d, parent id %d \n",getpid(),getppid());		
+}
+
+---------------------------------------------------------------------------------------------
+
+/* WAPfor ZOMBIE */
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+main()
+{
+  pid_t pid;
+  printf("process id %d, parent id %d \n",getpid(),getppid());
+  pid = fork();
+  if(pid == 0)
+    printf("CHILD:: process id %d, parent id %d \n",getpid(),getppid());
+  else
+  {    
+    printf("PARENT:: process id %d, parent id %d \n",getpid(),getppid());		
+    sleep(500);
+  }
+}
+
+kill pid_child
+ps -aux | grep -w Z
+---------------------------------------------------------------------------------------------
+
+/* WAP to create 2 children of same parent and get wait status of both */
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+main()
+{
+  pid_t pid;
+  int status;
+  //printf("PARENT: process id %d, parent id %d \n",getpid(),getppid());
+  pid = fork();
+  if(!pid)
+  {
+    printf("CHILD1: process id %d, parent id %d \n",getpid(),getppid());
+    sleep(500);
+  }
+  else
+  {
+    waitpid(pid,&status,0);
+    printf("Exit status of child1 %d is %d \n",pid,WIFEXITED(status));
+    printf("PARENT1: process id %d, parent id %d \n",getpid(),getppid());
+    pid = fork();
+    if(!pid)
+      printf("CHILD2: process id %d, parent id %d \n",getpid(),getppid());
+    else
+    {
+    waitpid(pid,&status,0);
+    printf("Exit status of child2 %d is %d \n",pid,WIFEXITED(status));
+      printf("PARENT2: process id %d, parent id %d \n",getpid(),getppid());
+    }
+  }
+}
+
+
+kill pid_child1
